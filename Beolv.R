@@ -12,10 +12,11 @@ Thetaall[,tti] <- as.numeric(Thetaall[,tti])
 }
 
 library(xts)
-K7ÉP <- xts(data.frame(theta1 = rowMeans(Thetaall[,2:5]),
-                       sd = apply(Thetaall[,2:5], 1, sd)),
-            as.Date(Thetaall[,1])
-            )
-plot.zoo(K7ÉP[,1], lwd=2, xaxs = "i", ylab = "Theta [%]", ylim = c(0,20))
-lines(as.zoo(K7ÉP[,"theta1"] - K7ÉP[,"sd"]), lty="dotted")
-lines(as.zoo(K7ÉP[,"theta1"] + K7ÉP[,"sd"]), lty="dotted")
+Thetasum <- xts(data.frame(K7ÉPth = rowMeans(Thetaall[,2:5]),
+                           K7ÉPsd = apply(Thetaall[,2:5], 1, sd),
+                           K35Fth = rowMeans(Thetaall[,6:9]),
+                           K35Fsd = apply(Thetaall[,6:9], 1, sd),
+                           K12Eth = rowMeans(Thetaall[,10:13]),
+                           K12Esd = apply(Thetaall[,10:13], 1, sd)),
+                as.Date(Thetaall[,1])
+                )
