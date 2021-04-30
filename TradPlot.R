@@ -17,4 +17,11 @@ lines(as.zoo(Thetasum[,"K35Fth"] + 2 * Thetasum[,"K35Fsd"]), lty="dotted", col =
 lines(as.zoo(Thetasum[,"K12Eth"]), lwd = 2, col = 3)
 lines(as.zoo(Thetasum[,"K12Eth"] - 2 * Thetasum[,"K12Esd"]), lty="dotted", col = 3)
 lines(as.zoo(Thetasum[,"K12Eth"] + 2 * Thetasum[,"K12Esd"]), lty="dotted", col = 3)
+par(new = TRUE)
+plot.zoo(Thetasum[,"K7ÉPth"], lwd=2, xaxs = "i",
+         ylim = c(-200,0), yaxs ="i", type="n", axes = FALSE, xlab = "",
+         ylab = "")
+lines(as.zoo(All.xts$Prec * -1), type = "h", col = "blue", lend = 1, lwd = 2)
+axis(4, at=c(0,-50,-100), lab = c(0,50,100))
+mtext("Csapadék [mm]", side = 4, line = 3, at = -25, las = 0)
 

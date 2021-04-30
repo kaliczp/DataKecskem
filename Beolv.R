@@ -20,3 +20,17 @@ Thetasum <- xts(data.frame(K7ÉPth = rowMeans(Thetaall[,2:5]),
                            K12Esd = apply(Thetaall[,10:13], 1, sd)),
                 as.Date(Thetaall[,1])
                 )
+
+## Munka1
+nyers <- read_xlsx("Mérések_Kecskemét.xlsx","Munka1")
+
+Alldata <- as.data.frame(nyers)[,1:4]
+names(Alldata) <- c("Date", "WaterLevel","ThetaK7ÉP", "Prec")
+Alldatacsak <- Alldata[3:136,]
+
+for(tti in 1:4)
+    Alldatacsak[,tti] <- as.numeric(Alldatacsak[,tti])
+
+Alldatacsak$Date  <- as.Date('1899-12-30') + as.numeric(Alldatacsak$Date)
+
+All.xts <- xts(Alldatacsak[,-1], Alldatacsak$Date)
