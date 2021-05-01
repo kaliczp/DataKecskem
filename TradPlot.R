@@ -1,4 +1,6 @@
 pdf(width=14)
+orilocale <- Sys.getlocale("LC_TIME")
+Sys.setlocale("LC_TIME", "C")
 par(mar=c(5.1,4.1,2.1,4.1), las = 1)
 plot.zoo(Thetasum[,"K7ÉPth"], lwd=2, xaxs = "i", ylab = "Theta [%]",
          ylim = c(0,20), yaxs ="i", type="n", xaxt = "n", xlab = "")
@@ -23,5 +25,6 @@ plot.zoo(Thetasum[,"K7ÉPth"], lwd=2, xaxs = "i",
          ylab = "")
 lines(as.zoo(All.xts$Prec * -1), type = "h", col = "blue", lend = 1, lwd = 2)
 axis(4, at=c(0,-50,-100), lab = c(0,50,100))
-mtext("Csapadék [mm]", side = 4, line = 3, at = -25, las = 0)
+mtext("Precipitation [mm]", side = 4, line = 3, at = -25, las = 0)
+Sys.setlocale("LC_TIME", orilocale)
 
