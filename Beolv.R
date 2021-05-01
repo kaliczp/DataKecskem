@@ -41,3 +41,18 @@ talnedv[,1] <- as.numeric(talnedv[,1])
 talnedv[,2] <- as.numeric(talnedv[,2])
 talnedv[,3] <- as.numeric(talnedv[,3])
 names(talnedv) <- c("K7ÉP","K35F","K12E")
+
+######################################################################
+## 2. ábra
+nyerstalaj1 <- read_xlsx("2. ábra adatok0325.xlsx", 1)
+nyerstalaj2 <- read_xlsx("2. ábra adatok0325.xlsx", 2)
+
+tal1.Date <- as.Date(as.data.frame(nyerstalaj1[,1])[,1])
+talaj1 <- as.data.frame(nyerstalaj1[,2:3])
+names(talaj1) <- c("Prec", "GW")
+talaj1.xts <- xts(talaj1, tal1.Date)
+
+tal2.Date <- as.Date(as.data.frame(nyerstalaj2[,1])[,1])
+talaj2 <- as.data.frame(nyerstalaj2[,2:3])
+names(talaj2) <- c("Prec", "GW")
+talaj2.xts <- xts(talaj2, tal2.Date)
