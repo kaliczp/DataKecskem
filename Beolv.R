@@ -34,3 +34,10 @@ for(tti in 1:4)
 Alldatacsak$Date  <- as.Date('1899-12-30') + as.numeric(Alldatacsak$Date)
 
 All.xts <- xts(Alldatacsak[,-1], Alldatacsak$Date)
+
+## Három talajnedvesség átlag
+talnedv <- as.data.frame(nyers[16:136,c(3,5,7)])
+talnedv[,1] <- as.numeric(talnedv[,1])
+talnedv[,2] <- as.numeric(talnedv[,2])
+talnedv[,3] <- as.numeric(talnedv[,3])
+names(talnedv) <- c("K7ÉP","K35F","K12E")
