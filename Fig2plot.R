@@ -1,3 +1,4 @@
+pdf(width=14)
 par(mar=c(3.1,4.1,2.1,4.1), las = 1)
 plot.zoo(talaj1.xts$GW['/2020-02-12'], lwd = 2, xaxs = "i", yaxs = "i",
          xlim = c(as.Date("2018-07-03"), as.Date("2020-02-12")),
