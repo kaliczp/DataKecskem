@@ -35,3 +35,4 @@ lines(as.zoo(talaj1.xts['/2020-02-12',"Prec"]), type = "h", col = "blue", lend =
 axis(2, at = c(0, 25, 50), col.tick = "blue")
 mtext("Precipitation [mm]", side = 2, line = 3, at = 25, las = 0, col = "blue")
 Sys.setlocale("LC_TIME", orilocale)
+legend(as.Date("2018-07-28"), 165, legend = c("Forest", "Open-field", "Precipitation"), col = c(1:2, "blue"), lty=1, lwd = c(2, 2, 3) , bg = "white")

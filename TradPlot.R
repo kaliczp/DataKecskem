@@ -32,4 +32,4 @@ lines(as.zoo(All.xts$Prec * -1), type = "h", col = "blue", lend = 1, lwd = 4)
 axis(4, at=c(0,-50,-100), lab = c(0,50,100))
 mtext("Precipitation [mm]", side = 4, line = 3, at = -25, las = 0)
 Sys.setlocale("LC_TIME", orilocale)
-
+legend(as.Date("2018-07-28"), -65, legend = c("Grassland", "Black locust", "Black pine", "Precipitation"), col = c(1:3, "blue"), lty=1, lwd = c(2, 2, 2, 3) , bg = "white")
