@@ -32,3 +32,33 @@ t.test(talnedv$K7ÉP, talnedv$K12E, paired = TRUE, var.eq=FALSE)
 
 var.test(talnedv$K35F, talnedv$K12E, paired = TRUE)
 t.test(talnedv$K35F, talnedv$K12E, paired = TRUE, var.eq=TRUE)
+
+## Vegetációs időszak máj-okt
+
+wilcox.test(coredata(c(talnedv.xts['/2018-10-31', "K7ÉP"],
+                       talnedv.xts['2019-05-01/2019-10-31', "K7ÉP"],
+                       talnedv.xts['2020-05-01/2020-10-31', "K7ÉP"])),
+            coredata(c(talnedv.xts['/2018-10-31', "K12E"],
+                       talnedv.xts['2019-05-01/2019-10-31', "K12E"],
+                       talnedv.xts['2020-05-01/2020-10-31', "K12E"])), paired = TRUE)
+
+wilcox.test(coredata(c(talnedv.xts['/2018-10-31', "K7ÉP"],
+                       talnedv.xts['2019-05-01/2019-10-31', "K7ÉP"],
+                       talnedv.xts['2020-05-01/2020-10-31', "K7ÉP"])),
+            coredata(c(talnedv.xts['/2018-10-31', "K35F"],
+                       talnedv.xts['2019-05-01/2019-10-31', "K35F"],
+                       talnedv.xts['2020-05-01/2020-10-31', "K35F"])), paired = TRUE)
+
+## Vegetáción kívül
+wilcox.test(coredata(c(talnedv.xts['2018-10-31/2019-05-01', "K7ÉP"],
+                       talnedv.xts['2019-10-31/2020-05-01', "K7ÉP"],
+                       talnedv.xts['2020-10-31/', "K7ÉP"])),
+            coredata(c(talnedv.xts['2018-10-31/2019-05-01', "K35F"],
+                       talnedv.xts['2019-10-31/2020-05-01', "K35F"],
+                       talnedv.xts['2020-10-31/', "K35F"])), paired = TRUE)
+wilcox.test(coredata(c(talnedv.xts['2018-10-31/2019-05-01', "K7ÉP"],
+                       talnedv.xts['2019-10-31/2020-05-01', "K7ÉP"],
+                       talnedv.xts['2020-10-31/', "K7ÉP"])),
+            coredata(c(talnedv.xts['2018-10-31/2019-05-01', "K12E"],
+                       talnedv.xts['2019-10-31/2020-05-01', "K12E"],
+                       talnedv.xts['2020-10-31/', "K12E"])), paired = TRUE)
