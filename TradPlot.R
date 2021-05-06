@@ -2,8 +2,10 @@ pdf(width=14)
 orilocale <- Sys.getlocale("LC_TIME")
 Sys.setlocale("LC_TIME", "C")
 par(mar=c(3.1,4.1,2.1,4.1), las = 1)
-plot.zoo(Thetasum[,"K7ÉPth"], lwd=2, xaxs = "i", ylab = "Theta [%]",
+plot.zoo(Thetasum[,"K7ÉPth"], lwd=2, xaxs = "i", ylab = "", yaxt = "n",
          ylim = c(0,20), yaxs ="i", type="n", xaxt = "n", xlab = "")
+axis(4)
+mtext("Soil moisture [%]", side = 4, line = 3, at = 10, las = 0)
 grid(nx = NA, ny = NULL)
 tick.month <- seq.Date(as.Date("2018-07-01"), as.Date("2021-04-01"), by = "1 month")
 tick.year <- seq.Date(as.Date("2019-01-01"), as.Date("2021-01-01"), by = "1 year")
@@ -29,7 +31,7 @@ plot.zoo(Thetasum[,"K7ÉPth"], lwd=2, xaxs = "i",
          ylim = c(-200,0), yaxs ="i", type="n", axes = FALSE, xlab = "",
          ylab = "")
 lines(as.zoo(All.xts$Prec * -1), type = "h", col = "blue", lend = 1, lwd = 4)
-axis(4, at=c(0,-50,-100), lab = c(0,50,100))
-mtext("Precipitation [mm]", side = 4, line = 3, at = -25, las = 0)
+axis(2, at=c(0,-50,-100), lab = c(0,50,100))
+mtext("Precipitation [mm/weeks]", side = 2, line = 3, at = -25, las = 0)
 Sys.setlocale("LC_TIME", orilocale)
 legend(as.Date("2018-07-28"), -65, legend = c("Grassland", "Black locust", "Black pine", "Precipitation"), col = c(1:3, "blue"), lty=1, lwd = c(2, 2, 2, 3) , bg = "white")
