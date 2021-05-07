@@ -38,7 +38,7 @@ Sys.setlocale("LC_TIME", orilocale)
 legend(as.Date("2018-07-28"), -65, legend = c("Grassland", "Black locust", "Black pine", "Precipitation"), col = c(1:3, "blue"), lty=1, lwd = c(2, 2, 2, 3) , bg = "white")
 par(mar=c(3.1,0,2.1,4.1), fig = c(0.87, 1, 0, 1), new = TRUE)
 
-boxplot(talnedv, ylim = c(0, 20), yaxs = "i", xaxt = "n", yaxt = "n")
+boxplot(talnedv, ylim = c(0, 20), yaxs = "i", xaxt = "n", yaxt = "n", border = NA, frame = FALSE, col="white")
 grid(nx = NA, ny = NULL)
 axis(1, at = 1:3, lab = c("GL", "BL", "BP"), cex.axis = 0.8)
 axis(1, at = 1:3, lab = FALSE, tck = 1, col = "lightgray", lty = "dotted")
