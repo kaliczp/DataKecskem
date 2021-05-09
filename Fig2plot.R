@@ -2,8 +2,8 @@ pdf(width=14)
 orilocale <- Sys.getlocale("LC_TIME")
 Sys.setlocale("LC_TIME", "C")
 par(mar=c(3.1,4.1,2.1,4.1), las = 1)
-Fig2limits <- c(as.Date("2018-07-03"), as.Date("2020-02-12"))
-plot.zoo(talaj1.xts$GW['/2020-02-12'], type = "n", xaxs = "i", yaxs = "i",
+Fig2limits <- c(as.Date("2018-07-03"), as.Date("2021-02-16"))
+plot.zoo(talaj1.xts$GW, type = "n", xaxs = "i", yaxs = "i",
          xlim = Fig2limits, xaxt = "n",
          ylim = c(-9.2, -7.0), yaxt = "n", ylab = "")
 tick.month <- seq.Date(Fig2limits[1] - 2, Fig2limits[2], by = "1 month")
@@ -19,19 +19,20 @@ text(x = yeartext, y = rep(-9.1, length(tick.year)), labels = format(yeartext, f
 axis(2, at = c(-8, -8.5, -9))
 mtext("GW [m below surface]", side = 2, line = 3, at = -8.5, las = 0)
 grid(nx = NA, ny = NULL)
-lines(as.zoo(talaj1.xts$GW['/2020-02-12']), lwd = 2)
+lines(as.zoo(talaj1.xts$GW), lwd = 2)
 par(new = TRUE)
 plot.zoo(talaj2.xts$GW, lwd = 2, xaxs = "i", yaxs = "i",
          xlim = Fig2limits, xaxt = "n",
          ylim = c(-5.2, -3.0), yaxt = "n", ylab ="", col = 2)
 mtext("GW VIZIG [m below surface]", side = 4, line = 3, at = -4, las = 0, col = 2)
 axis(4, at = c(-3.5, -4, -4.5), col = 2, col.tick = 2)
+lines(as.zoo(vizigp.xts), lwd = 2, col = 2)
 par(new = TRUE)
-plot.zoo(talaj1.xts['/2020-02-12',"Prec"], xaxs = "i", yaxs = "i", type = "n",
+plot.zoo(talaj1.xts[,"Prec"], xaxs = "i", yaxs = "i", type = "n",
          xlim = Fig2limits, xaxt = "n",
          ylim = c(220, 0), yaxt = "n", ylab ="")
 axis(2, at = 25, tck = 1, col = "lightgray", lty = "dotted", lab = F)
-lines(as.zoo(talaj1.xts['/2020-02-12',"Prec"]), type = "h", col = "blue", lend = 1, lwd = 3)
+lines(as.zoo(talaj1.xts[,"Prec"]), type = "h", col = "blue", lend = 1, lwd = 3)
 axis(2, at = c(0, 25, 50), col.tick = "blue")
 mtext("Precipitation [mm]", side = 2, line = 3, at = 25, las = 0, col = "blue")
 Sys.setlocale("LC_TIME", orilocale)

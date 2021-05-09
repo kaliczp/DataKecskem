@@ -56,3 +56,8 @@ tal2.Date <- as.Date(as.data.frame(nyerstalaj2[,1])[,1])
 talaj2 <- as.data.frame(nyerstalaj2[,2:3])
 names(talaj2) <- c("Prec", "GW")
 talaj2.xts <- xts(talaj2, tal2.Date)
+
+vizignyers <- read_xlsx("2352_kút.xlsx","2352 Kecskemét")
+## Napi egy adatra redukált data.frame
+vizigp.df <- as.data.frame(vizignyers[,1:2])[seq(1,856,2),]
+vizigp.xts <- xts(vizigp.df$Adat/-100, as.Date(vizigp.df$Időpont))
