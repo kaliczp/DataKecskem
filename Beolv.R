@@ -42,6 +42,13 @@ talnedv[,2] <- as.numeric(talnedv[,2])
 talnedv[,3] <- as.numeric(talnedv[,3])
 names(talnedv) <- c("K7ÉP","K35F","K12E")
 
+## Soilmoisture with factor place holders for plot
+talnedv.fac <- data.frame(Data = unlist(talnedv, use.names = FALSE),
+                          Place = factor(rep(c("GL","BL","BP"), each = nrow(talnedv)),
+                                         levels = c("BL","dummy1","GL","dummy2","BP"))
+                          )
+
+
 ######################################################################
 ## 2. ábra
 nyerstalaj1 <- read_xlsx("2. ábra adatok0325.xlsx", 1)
