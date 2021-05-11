@@ -44,5 +44,7 @@ axis(1, at = c(1,3,5), lab = c("BL", "GL", "BP"), cex.axis = 0.8)
 axis(1, at = c(1,3,5), lab = FALSE, tck = 1, col = "lightgray", lty = "dotted")
 boxplot(Data ~ Place, data = talnedv.fac, ylim = c(0, 20), yaxs = "i", xaxt = "n",
         yaxt = "n", col= c(2, "white", "gray", "white" ,3), add = TRUE)
+means <- aggregate(Data ~ Place, talnedv.fac, mean)
+points(c(1, 3, 5), means$Data, pch = 18)
 axis(4)
 mtext("Soil moisture [%]", side = 4, line = 3, at = 10, las = 0)
