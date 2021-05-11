@@ -46,5 +46,13 @@ boxplot(Data ~ Place, data = talnedv.fac, ylim = c(0, 20), yaxs = "i", xaxt = "n
         yaxt = "n", col= c(2, "white", "gray", "white" ,3), add = TRUE)
 means <- aggregate(Data ~ Place, talnedv.fac, mean)
 points(c(1, 3, 5), means$Data, pch = 18)
+lines(c(2,2), means[1:2, "Data"])
+lines(c(4,4), means[2:3, "Data"])
+text(2, means[2,2], paste(round(means[2,2] - means[1,2], 2),
+                          "%"),
+                          srt = 90, adj = c(-0.1,0.5))
+text(4, means[2,2], paste(round(means[2,2] - means[3,2], 2),
+                          "%"),
+     srt = 90, adj = c(-0.1,0.5))
 axis(4)
 mtext("Soil moisture [%]", side = 4, line = 3, at = 10, las = 0)
