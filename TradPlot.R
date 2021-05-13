@@ -31,9 +31,9 @@ par(new = TRUE)
 plot.zoo(Thetasum[,"K7ÉPth"], lwd=2, xaxs = "i",
          ylim = c(-200,0), yaxs ="i", type="n", axes = FALSE, xlab = "",
          ylab = "")
-lines(as.zoo(All.xts$Prec * -1), type = "h", col = "blue", lend = 1, lwd = 4)
+lines(as.zoo(csap.xts * -1), type = "h", col = "blue", lend = 1, lwd = 4)
 axis(2, at=c(0,-50,-100), lab = c(0,50,100))
-mtext("Precipitation [mm/weeks]", side = 2, line = 3, at = -25, las = 0)
+mtext("Precipitation [mm/day]", side = 2, line = 3, at = -25, las = 0)
 Sys.setlocale("LC_TIME", orilocale)
 legend(as.Date("2018-07-28"), -65, legend = c("Grassland", "Black locust", "Black pine", "Precipitation"), col = c(1:3, "blue"), lty=1, lwd = c(2, 2, 2, 3) , bg = "white")
 par(mar=c(3.1,0,2.1,4.1), fig = c(0.87, 1, 0, 1), new = TRUE)
