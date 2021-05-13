@@ -68,3 +68,21 @@ vizignyers <- read_xlsx("2352_kút.xlsx","2352 Kecskemét")
 ## Napi egy adatra redukált data.frame
 vizigp.df <- as.data.frame(vizignyers[,1:2])[seq(1,856,2),]
 vizigp.xts <- xts(vizigp.df$Adat/-100, as.Date(vizigp.df$Időpont))
+
+## Daily prec
+nyers <- read_xlsx("GSM/GSM_KECSKEMET17napi_havi.xlsx","napi")
+csap.df <- as.data.frame(nyers[-(1:3),c(1,12)])
+names(csap.df) <- c("Date","Prec")
+
+for(ttev in 18:20) {
+    nyers <- read_xlsx(paste0("GSM/GSM_KECSKEMET", ttev, "napi_havi.xlsx"),"napi")
+    nextcsap.df <- as.data.frame(nyers[-(1:3),c(1,12)])
+    names(nextcsap.df) <- c("Date","Prec")
+    csap.df <- rbind(csap.df, nextcsap.df)
+}
+## Some correction rows deleted
+csap.df <- csap.df[1:1461,]
+
+csap.df[, "Date"] <- as.Date('1899-12-30') + as.numeric(csap.df[, "Date"])
+
+csap.xts <- xts(as.numeric(csap.df[, "Prec"]), csap.df[, "Date"])
