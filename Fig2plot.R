@@ -1,4 +1,6 @@
+png(width=960)
 pdf(width=14)
+
 orilocale <- Sys.getlocale("LC_TIME")
 Sys.setlocale("LC_TIME", "C")
 par(mar=c(3.1,4.1,2.1,4.1), las = 2)

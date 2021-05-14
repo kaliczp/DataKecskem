@@ -1,3 +1,4 @@
+png(width=960)
 pdf(width=14)
 
 orilocale <- Sys.getlocale("LC_TIME")
