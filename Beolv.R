@@ -65,9 +65,19 @@ names(talaj2) <- c("Prec", "GW")
 talaj2.xts <- xts(talaj2, tal2.Date)
 
 vizignyers <- read_xlsx("2352_kút.xlsx","2352 Kecskemét")
-## Napi egy adatra redukált data.frame
+## Data reduced to one day frequency
 vizigp.df <- as.data.frame(vizignyers[,1:2])[seq(1,856,2),]
 vizigp.xts <- xts(vizigp.df$Adat/-100, as.Date(vizigp.df$Időpont))
+
+## Korrekciók
+vizigpcorr.xts <- vizigp.xts
+vizigpcorr.xts[1:226] <- vizigpcorr.xts[1:226]+0.06
+vizigpcorrdat.xts <- xts(coredata(vizigpcorr.xts[seq(1,856,2),]),
+                         as.Date(index(vizigpcorr.xts[seq(1,856,2),])))
+
+vizigorinyers <- read_xlsx("TalajkutEszlelt(3).xlsx","2352 Kecskemét")
+vizigori.df <- as.data.frame(vizigorinyers[,1:2])
+vizigori.xts <- xts(vizigori.df$Adat/-100, as.Date(vizigori.df$Időpont))
 
 ## Daily prec
 nyers <- read_xlsx("GSM/GSM_KECSKEMET17napi_havi.xlsx","napi")

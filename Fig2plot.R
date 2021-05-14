@@ -21,7 +21,7 @@ mtext("GW [m below surface]", side = 2, line = 3, at = -8.5, las = 0)
 grid(nx = NA, ny = NULL)
 lines(as.zoo(talaj1.xts$GW), lwd = 2)
 par(new = TRUE)
-plot.zoo(talaj2.xts$GW, lwd = 2, xaxs = "i", yaxs = "i",
+plot.zoo(vizigori.xts, lwd = 2, xaxs = "i", yaxs = "i",
          xlim = Fig2limits, xaxt = "n",
          ylim = c(-5.4, -3.0), yaxt = "n", ylab ="", col = 2)
 mtext("GW VIZIG [m below surface]", side = 4, line = 3, at = -4, las = 0, col = 2)
