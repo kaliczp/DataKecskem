@@ -1,4 +1,5 @@
 png(width=960)
+
 pdf(width=14)
 
 orilocale <- Sys.getlocale("LC_TIME")
@@ -38,7 +39,6 @@ mtext("Precipitation [mm/day]", side = 2, line = 3, at = -25, las = 0)
 Sys.setlocale("LC_TIME", orilocale)
 legend(as.Date("2018-07-28"), -65, legend = c("Grassland", "Black locust", "Black pine", "Precipitation"), col = c(1:3, "blue"), lty=1, lwd = c(2, 2, 2, 3) , bg = "white")
 par(mar=c(3.1,0,2.1,4.1), fig = c(0.87, 1, 0, 1), new = TRUE)
-
 boxplot(Data ~ Place, data = talnedv.fac, ylim = c(0, 20), yaxs = "i", xaxt = "n", yaxt = "n", border = NA, frame = FALSE, col="white")
 grid(nx = NA, ny = NULL)
 axis(1, at = c(1,3,5), lab = c("BL", "GL", "BP"), cex.axis = 0.8)
@@ -49,11 +49,11 @@ means <- aggregate(Data ~ Place, talnedv.fac, mean)
 points(c(1, 3, 5), means$Data, pch = 18)
 lines(c(2,2), means[1:2, "Data"], lwd = 2)
 lines(c(4,4), means[2:3, "Data"], lwd = 2)
-text(2, means[2,2], paste(round(means[2,2] - means[1,2], 2),
-                          "%"),
-                          srt = 90, adj = c(-0.1,0.5))
-text(4, means[2,2], paste(round(means[2,2] - means[3,2], 2),
-                          "%"),
-     srt = 90, adj = c(-0.1,0.5))
+text(2, means[2,2] + 0.5, paste(round(means[2,2] - means[1,2], 2),
+                          "%, C. int. 95%  0.62-1.07, p-val.: 1.39e-11"),
+                          srt = 90, adj = c(0,0.5))
+text(4, means[2,2] + 0.5 , paste(round(means[2,2] - means[3,2], 2),
+                          "%, C. int. 95% 1.48-1.95, p-val.: < 2.2e-16"),
+     srt = 90, adj = c(0,0.5))
 axis(4)
 mtext("Soil moisture [%]", side = 4, line = 3, at = 10, las = 0)
