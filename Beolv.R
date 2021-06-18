@@ -96,3 +96,11 @@ csap.df <- csap.df[1:1461,]
 csap.df[, "Date"] <- as.Date('1899-12-30') + as.numeric(csap.df[, "Date"])
 
 csap.xts <- xts(as.numeric(csap.df[, "Prec"]), csap.df[, "Date"])
+
+## 2021 precipitation
+nyers <- read_xlsx("csapadék Méntelek 2021.xlsx","Sheet1")
+csap2021 <- as.data.frame(nyers[-1,1:2])
+names(csap2021) <- c("Date","Prec")
+csap2021.xts <- xts(as.numeric(csap2021[,2]), csap2021[,1])
+csap2021napi.xts <- apply.daily(csap2021.xts, sum)
+csap.xts <- c(csap.xts, xts(coredata(csap2021napi.xts), as.Date(index(csap2021napi.xts))))
