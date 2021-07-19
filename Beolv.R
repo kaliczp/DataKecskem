@@ -113,6 +113,11 @@ PrecAbr10cm <- Abr10cm.df[, c(1,5)]
 PrecAbr10cm <- PrecAbr10cm[!is.na(PrecAbr10cm[,2]), ]
 Abr10cm.df <- Abr10cm.df[, -5]
 
+PrecTime <- c(PrecAbr10cm[,1], PrecAbr10cm[nrow(PrecAbr10cm),1] + (1:2) * 24 * 60 * 60)
+PrecAbr10cm.xts <- xts(c(PrecAbr10cm[,2],0,0), PrecTime)
+
+Abr10cm.xts  <- xts(Abr10cm.df[,-1], Abr10cm.df[,1])
+
 nyers <- read_xlsx("Ábra adatok0719.xlsx","2. ábra (90 cm)")
 
 nyers <- read_xlsx("Ábra adatok0719.xlsx","3. ábra (200 cm)")
