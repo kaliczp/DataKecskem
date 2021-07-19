@@ -104,3 +104,15 @@ names(csap2021) <- c("Date","Prec")
 csap2021.xts <- xts(as.numeric(csap2021[,2]), csap2021[,1])
 csap2021napi.xts <- apply.daily(csap2021.xts, sum)
 csap.xts <- c(csap.xts, xts(coredata(csap2021napi.xts), as.Date(index(csap2021napi.xts))))
+
+
+#### Talajned-csap ábra
+nyers <- read_xlsx("Ábra adatok0719.xlsx","1. ábra (10 cm)")
+Abr10cm.df <- as.data.frame(nyers)
+PrecAbr10cm <- Abr10cm.df[, c(1,5)]
+PrecAbr10cm <- PrecAbr10cm[!is.na(PrecAbr10cm[,2]), ]
+Abr10cm.df <- Abr10cm.df[, -5]
+
+nyers <- read_xlsx("Ábra adatok0719.xlsx","2. ábra (90 cm)")
+
+nyers <- read_xlsx("Ábra adatok0719.xlsx","3. ábra (200 cm)")
