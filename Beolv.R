@@ -145,3 +145,24 @@ Abr90cm.xts  <- xts(Abr90cm.df[-nrow(Abr90cm.df),-1], Abr90cm.df[-nrow(Abr90cm.d
 
 
 nyers <- read_xlsx("Ábrák_talajnedv_10_90_200.xlsx","200 cm")
+Abr200cm.df <- as.data.frame(nyers)
+PrecAbr200cm <- Abr200cm.df[, c(1,5)]
+PrecAbr200cm <- PrecAbr200cm[!is.na(PrecAbr200cm[,2]), ]
+Abr200cm.df <- Abr200cm.df[, -5]
+
+Abr200cm.xts  <- xts(Abr200cm.df[-nrow(Abr200cm.df),-1], Abr200cm.df[-nrow(Abr200cm.df),1])
+
+## Napi adatok Bencétől
+library(readxl)
+
+Abr10cmd.df <- as.data.frame(read_xlsx("Napi_talajnedvesség_csapadék.xlsx", range = "A2:E236"))
+AbrIdod.vec <- as.POSIXct(Abr10cmd.df[,1])
+Abr10cmd.xts  <- xts(Abr10cmd.df[,-c(1,5)], AbrIdod.vec)
+
+AbrCsapd.xts  <- xts(Abr10cmd.df[,5], AbrIdod.vec)
+
+Abr90cmd.df <- as.data.frame(read_xlsx("Napi_talajnedvesség_csapadék.xlsx", range = "J2:L236"))
+Abr90cmd.xts  <- xts(Abr90cmd.df, AbrIdod.vec)
+
+Abr200cmd.df <- as.data.frame(read_xlsx("Napi_talajnedvesség_csapadék.xlsx", range = "R2:T236"))
+Abr200cmd.xts  <- xts(Abr200cmd.df, AbrIdod.vec)
