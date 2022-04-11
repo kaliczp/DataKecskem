@@ -49,11 +49,5 @@ means <- aggregate(Data ~ Place, talnedv.fac, mean)
 points(c(1, 3, 5), means$Data, pch = 18)
 lines(c(2,2), means[1:2, "Data"], lwd = 2)
 lines(c(4,4), means[2:3, "Data"], lwd = 2)
-text(2, means[2,2] + 0.5, paste(round(means[2,2] - means[1,2], 2),
-                          "%, 0.62-1.07, 1.39e-11"),
-                          srt = 90, adj = c(0,0.5))
-text(4, means[2,2] + 0.5 , paste(round(means[2,2] - means[3,2], 2),
-                          "%, 1.48-1.95, < 2.2e-16"),
-     srt = 90, adj = c(0,0.5))
 axis(4)
 mtext("Soil moisture [%]", side = 4, line = 1.8, at = 10, las = 0)
