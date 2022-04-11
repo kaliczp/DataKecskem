@@ -21,11 +21,11 @@ axis.POSIXct(1, at = tick.day + 12 * 60 * 60, tcl = 0, format = "%d", cex.axis =
 par(mgp = c(3, 2, 0))
 axis.POSIXct(1, at = as.POSIXct(c("2021-05-21 00:00", "2021-06-10 00:00")), tcl = 0, format = "%b", cex.axis = 0.8, las = 1)
 par(mgp = c(3, 1, 0))
-lines(as.zoo(Abr10cm.xts[,1]), lwd =2)
-lines(as.zoo(Abr10cm.xts[,2]), lwd =2, col = 2)
-lines(as.zoo(Abr10cm.xts[,3]), lwd =2, col = 3)
+lines(as.zoo(Abr10cm.xts[,1]), lwd =2, col = 3)
+lines(as.zoo(Abr10cm.xts[,2]), lwd =2, col = 1)
+lines(as.zoo(Abr10cm.xts[,3]), lwd =2, col = 2)
 par(new = TRUE)
-plot(as.zoo(PrecAbr10cm.xts), type = "h", col = "lightblue", ylim = c(200,0),
+plot(as.zoo(AbrCsapd.xts), type = "h", col = "lightblue", ylim = c(200,0),
         yaxs = "i", xaxs = "i", xaxt = "n", yaxt = "n", lwd = 15, lend = 2,
         xlim = tick.day[c(1, length(tick.day))], xlab = "", ylab = "")
 axis(4, at = c(0,25,50))
