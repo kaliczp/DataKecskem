@@ -29,6 +29,6 @@ plot(as.zoo(AbrCsapd.xts), type = "h", col = "lightblue", ylim = c(200,0),
         yaxs = "i", xaxs = "i", xaxt = "n", yaxt = "n", lwd = 15, lend = 2,
         xlim = tick.day[c(1, length(tick.day))], xlab = "", ylab = "")
 axis(4, at = c(0,25,50))
-mtext("Precipitation [mm]", side = 4, line = 3, at = 25, las = 0)
+mtext("Precipitation [mm/day]", side = 4, line = 3, at = 25, las = 0)
 box()
 legend(as.POSIXct("2021-06-01 00:00"), 100, legend = c("Black Locust", "Black Pine", "Control"), col = c(1:3, "blue"), lty=1, lwd = c(2, 2, 2) , bg = "white")

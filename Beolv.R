@@ -156,7 +156,7 @@ Abr200cm.xts  <- xts(Abr200cm.df[-nrow(Abr200cm.df),-1], Abr200cm.df[-nrow(Abr20
 library(readxl)
 
 Abr10cmd.df <- as.data.frame(read_xlsx("Napi_talajnedvesség_csapadék.xlsx", range = "A2:E236"))
-AbrIdod.vec <- as.POSIXct(Abr10cmd.df[,1])
+AbrIdod.vec <- as.POSIXct(Abr10cmd.df[,1]) + 12 * 60 * 60
 Abr10cmd.xts  <- xts(Abr10cmd.df[,-c(1,5)], AbrIdod.vec)
 
 AbrCsapd.xts  <- xts(Abr10cmd.df[,5], AbrIdod.vec)
