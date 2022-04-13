@@ -134,6 +134,8 @@ PrecTime <- c(PrecAbr10cm[,1], PrecAbr10cm[nrow(PrecAbr10cm),1] + (1:2) * 24 * 6
 PrecAbr10cm.xts <- xts(c(PrecAbr10cm[,2],0,0), PrecTime)
 
 Abr10cm.xts  <- xts(Abr10cm.df[,-1], Abr10cm.df[,1])
+cm10.ep <- endpoints(Abr10cm.df[,1], on = "hours")
+Abr10cmh.xts  <- period.apply(Abr10cm.xts, cm10.ep, mean)
 
 nyers <- read_xlsx("Ábrák_talajnedv_10_90_200.xlsx","90 cm")
 Abr90cm.df <- as.data.frame(nyers)
@@ -142,15 +144,19 @@ PrecAbr90cm <- PrecAbr90cm[!is.na(PrecAbr90cm[,2]), ]
 Abr90cm.df <- Abr90cm.df[, -5]
 
 Abr90cm.xts  <- xts(Abr90cm.df[-nrow(Abr90cm.df),-1], Abr90cm.df[-nrow(Abr90cm.df),1])
+cm90.ep <- endpoints(index(Abr90cm.xts), on = "hours")
+Abr90cmh.xts  <- period.apply(Abr90cm.xts, cm10.ep, mean)
 
 
 nyers <- read_xlsx("Ábrák_talajnedv_10_90_200.xlsx","200 cm")
+nyers <- read_xlsx("3.,4.,5. Ábra adatok.xlsx","3. ábra (200 cm)")
 Abr200cm.df <- as.data.frame(nyers)
-PrecAbr200cm <- Abr200cm.df[, c(1,5)]
-PrecAbr200cm <- PrecAbr200cm[!is.na(PrecAbr200cm[,2]), ]
-Abr200cm.df <- Abr200cm.df[, -5]
+Abr200cm <- Abr200cm.df[, 1:4]
+Abr200cm <- Abr200cm[!is.na(Abr200cm[,2]), ]
 
-Abr200cm.xts  <- xts(Abr200cm.df[-nrow(Abr200cm.df),-1], Abr200cm.df[-nrow(Abr200cm.df),1])
+Abr200cm.xts  <- xts(Abr200cm[,-1], Abr200cm[,1])
+cm200.ep <- endpoints(index(Abr200cm.xts), on = "hours")
+Abr200cmh.xts  <- period.apply(Abr200cm.xts, cm200.ep, mean)
 
 ## Napi adatok Bencétől
 library(readxl)
