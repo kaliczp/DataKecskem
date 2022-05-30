@@ -14,6 +14,9 @@ Thetaall[,tti] <- as.numeric(Thetaall[,tti])
 ## Remove empty rows
 Thetaall <- Thetaall[!is.na(Thetaall[,2]),]
 
+## Remove 0 values
+Thetaall[Thetaall == 0]  <- NA
+
 library(xts)
 Thetasum <- xts(data.frame(K7ÉPth = rowMeans(Thetaall[,2:5]),
                            K7ÉPsd = apply(Thetaall[,2:5], 1, sd),
