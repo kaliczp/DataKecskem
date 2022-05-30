@@ -179,3 +179,21 @@ Abr90cmd.xts  <- xts(Abr90cmd.df, AbrIdod.vec)
 
 Abr200cmd.df <- as.data.frame(read_xlsx("Napi_talajnedvesség_csapadék.xlsx", range = "R2:T236"))
 Abr200cmd.xts  <- xts(Abr200cmd.df, AbrIdod.vec)
+
+## Méntelek újra
+oricsap.xts <- csap.xts
+Meentelek220510 <- as.data.frame(read_excel("Ábrák_talajnedv_10_90_200_angol.xlsx","Manual", "A3:E190"))
+
+(Thetasum[-nrow(Thetasum),3] - Meentelek220510[,3]) > 0.1
+
+Meentelek220510[,c(1,5)]
+Meentelek220510Date <- as.Date(Meentelek220510[,1])
+
+Meentelek.idx <- numeric()
+for(tti in 1:length(Meentelek220510Date))
+    Meentelek.idx[tti] <- which(index(csap.xts) == Meentelek220510Date[tti])
+
+Meentelek.idx <- c(0,Meentelek.idx)
+Meentelek.compare <- period.apply(csap.xts, Meentelek.idx, sum)
+Meentelekcsap.xts <- xts(Meentelek220510[,5], Meentelek220510Date)
+Meentelekcsap.xts['/2021-05-03']-Meentelek.compare
