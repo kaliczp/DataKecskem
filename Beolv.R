@@ -32,7 +32,7 @@ nyers <- read_xlsx("Mérések_Kecskemét.xlsx","Munka1")
 
 Alldata <- as.data.frame(nyers)[,1:4]
 names(Alldata) <- c("Date", "WaterLevel","ThetaK7ÉP", "Prec")
-Alldatacsak <- Alldata[3:136,]
+Alldatacsak <- Alldata[3:188,]
 
 for(tti in 1:4)
     Alldatacsak[,tti] <- as.numeric(Alldatacsak[,tti])
@@ -42,7 +42,7 @@ Alldatacsak$Date  <- as.Date('1899-12-30') + as.numeric(Alldatacsak$Date)
 All.xts <- xts(Alldatacsak[,-1], Alldatacsak$Date)
 
 ## Három talajnedvesség átlag
-talnedv <- as.data.frame(nyers[16:136,c(3,5,7)])
+talnedv <- as.data.frame(nyers[4:191,c(3,5,7)])
 talnedv[,1] <- as.numeric(talnedv[,1])
 talnedv[,2] <- as.numeric(talnedv[,2])
 talnedv[,3] <- as.numeric(talnedv[,3])
