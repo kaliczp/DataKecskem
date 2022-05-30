@@ -1,6 +1,7 @@
 jpeg("Fig6Moist10cm.jpg", width=17.8, height=11, units ="cm", res = 300, pointsize = 11)
 jpeg("Fig6Moist10cm1000.jpg", width=17.8, height=11, units ="cm", res = 1000, pointsize = 11)
 png("Fig6Moist10cm.png", width=17.8, height=11, units ="cm", res = 300, pointsize = 11)
+pdf("Fig6Moist10cm.pdf", width=420/25.4, height=297/25.4, pointsize = 11)
 
 Sys.setenv(TZ='UTC')
 orilocale <- Sys.getlocale("LC_TIME")
