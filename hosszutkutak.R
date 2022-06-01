@@ -1,23 +1,20 @@
 Sys.setenv(TZ="UTC")
-raw <- read.table("2352.csv", sep = "\t", head = TRUE)
-kut <- raw[,1:2]
+library(readxl)
+
+raw <- as.data.frame(read_excel("HosszútávúTalajvízIdősorok8h.xlsx",2))
 library(xts)
-kut.xts <- xts(0 - kut[,2], as.POSIXct((strptime(kut[,1], format = "%Y. %m. %d. %H:%M"))))
+kut.xts <- xts(0 - raw[,-1], as.Date(paste0(raw[,1],"-07-01")))
 plot(kut.xts)
-plot(kut.xts['1979'])
-points(kut.xts['1979'])
 
-plot(kut.xts['1989'])
-points(kut.xts['1989'])
 
-plot(kut.xts['2009/2011'])
-points(kut.xts['2009/2011'])
+csraw <- as.data.frame(read_excel("OMSZ_csapi_1940_8állomás_homok.xlsx",1, "A1:B81"))
+cs.xts <- xts(csraw[,2], as.Date(paste(csraw[,1], 7, 1, sep="-")))
 
-csraw <- read.table("OMSZcsapi.csv", sep = "\t", head = TRUE)
-cs.xts <- xts(csraw[,2], as.POSIXct(paste(csraw[,1], 7, 1, sep="-")))
-
-FigLim <- c(as.POSIXct("1940-01-01"), as.POSIXct("2021-01-01"))
-plot.zoo(kut.xts, ylim = c(-500,50), xlim = FigLim, lwd = 2, xaxs = "i")
+FigLim <- c(as.Date("1962-01-01"), as.Date("2014-01-01"))
+plot.zoo(kut.xts[,1], ylim = c(-5,0), xlim = FigLim, lwd = 2, xaxs = "i", col = "gray")
+for(tti in 2:ncol(kut.xts))
+    lines(as.zoo(kut.xts[,tti]), col = "gray")
+lines(zoo(rowMeans(kut.xts, na.rm = TRUE), index(kut.xts)), lwd = 3)
 par(new = TRUE)
 plot.zoo(cs.xts, type ="h", ylim = c(1500,300), xlim = FigLim, lwd = 4, col = "blue", xaxs = "i")
 axis(4)
