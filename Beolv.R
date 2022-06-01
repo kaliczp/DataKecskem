@@ -16,6 +16,7 @@ Thetaall <- Thetaall[!is.na(Thetaall[,2]),]
 
 ## Remove 0 values
 Thetaall[Thetaall == 0]  <- NA
+Thetaall.xts <- xts(Thetaall[,-1], Thetaall[,1])
 
 library(xts)
 Thetasum <- xts(data.frame(K7ÉPth = rowMeans(Thetaall[,2:5]),
@@ -127,6 +128,9 @@ PrecAbr10cm.xts <- xts(c(PrecAbr10cm[,2],0,0), PrecTime)
 Abr10cm.xts  <- xts(Abr10cm.df[,-1], Abr10cm.df[,1])
 cm10.ep <- endpoints(Abr10cm.df[,1], on = "hours")
 Abr10cmh.xts  <- period.apply(Abr10cm.xts, cm10.ep, mean)
+oriAbr10cmh.xts <- Abr10cmh.xts
+Abr10cmh.xts['2021-12-22 00:50/2021-12-25 22:50',1] <- NA
+Abr10cmh.xts['2022-01-10 00:50/2022-02-16 22:50',1] <- NA
 
 nyers <- read_xlsx("Ábrák_talajnedv_10_90_200_angol.xlsx","90 cm")
 Abr90cm.df <- as.data.frame(nyers)
