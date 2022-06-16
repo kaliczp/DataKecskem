@@ -38,7 +38,7 @@ plot.zoo(Thetasum[,"K7ÉPth"], lwd=2, xaxs = "i",
          ylab = "")
 lines(as.zoo(Meentelekcsap.xts * -1), type = "h", col = "lightblue", lend = 1, lwd = 3)
 axis(2, at=c(0,-50,-100), lab = c(0,50,100))
-mtext("Precipitation [mm/?]", side = 2, line = 2.1, at = -50, las = 0)
+mtext("Precipitation [mm/week]", side = 2, line = 2.1, at = -50, las = 0)
 Sys.setlocale("LC_TIME", orilocale)
 legend(as.Date("2019-07-07"), -52, legend = c("Black Locust", "Black Pine", "Control"), col = c(1:3), lty=1, lwd = c(2, 2, 2) , bg = "white")
 box()
