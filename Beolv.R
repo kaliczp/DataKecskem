@@ -154,6 +154,9 @@ Abr200cmh.xts  <- period.apply(Abr200cm.xts, cm200.ep, mean)
 OriAbr200cmh.xts <- Abr200cmh.xts
 plot(Abr200cmh.xts['2021-12-20 20:50/2021-12-22 08:50',2])
 Abr200cmh.xts['2021-12-20 20:50/2021-12-22 08:50',2] <- 13.2
+plot(Abr200cmh.xts['2021-12-28/2021-12-29',2])
+14.98333 - 13.16667 # 1.8
+Abr200cmh.xts['2021-12-28 23:50/',2] <- Abr200cmh.xts['2021-12-28 23:50/',2] - 1.8
 
 
 ## Napi adatok Bencétől
