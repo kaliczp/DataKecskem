@@ -62,3 +62,30 @@ wilcox.test(coredata(c(talnedv.xts['2018-10-31/2019-05-01', "K7ÉP"],
             coredata(c(talnedv.xts['2018-10-31/2019-05-01', "K12E"],
                        talnedv.xts['2019-10-31/2020-05-01', "K12E"],
                        talnedv.xts['2020-10-31/', "K12E"])), paired = TRUE)
+
+
+## Final stat
+boxplot(Data ~ Place, data = talnedv.fac, ylim = c(0, 20), yaxs = "i", xaxt = "n", yaxt = "n", border = NA, frame = FALSE, col="white")
+
+boxplot(Data ~ Place, data = talnedv.fac, ylim = c(0, 20), yaxs = "i", xaxt = "n",
+        yaxt = "n", col= c("gray", "white", 3 , "white" ,2), add = TRUE)
+
+## BLvsGL <- talnedv.fac[talnedv.fac$Place == "BL" | talnedv.fac$Place == "GL", ]
+
+## var.test(Data ~ Place, data = BLvsGL, paired = TRUE)
+## t.test(Data ~ Place, data = BLvsGL, paired = TRUE)
+
+## talnedv.mean <- coredata(Thetasum[,c(1,3,5)])
+talnedv.mean.stat <- talnedv.mean[!is.na(talnedv.mean[, "K7ÉPth"]),]
+colnames(talnedv.mean.stat)  <- c("GL","BL","BP")
+
+var.test(talnedv$GL, talnedv$BL, paired = TRUE)
+t.test(talnedv$GL, talnedv$BL, paired = TRUE, var.eq=FALSE)
+
+## GL vs BL
+var.test(talnedv$K7ÉP, talnedv$K35F, paired = TRUE)
+t.test(talnedv$K7ÉP, talnedv$K35F, paired = TRUE, var.eq = FALSE)
+
+## GL vs BP
+var.test(talnedv$K7ÉP, talnedv$K12E, paired = TRUE)
+t.test(talnedv$K7ÉP, talnedv$K12E, paired = TRUE, var.eq=FALSE)
