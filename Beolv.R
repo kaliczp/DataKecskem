@@ -151,6 +151,10 @@ Abr200cm <- Abr200cm[!is.na(Abr200cm[,2]), ]
 Abr200cm.xts  <- xts(Abr200cm[,-1], Abr200cm[,1])
 cm200.ep <- endpoints(index(Abr200cm.xts), on = "hours")
 Abr200cmh.xts  <- period.apply(Abr200cm.xts, cm200.ep, mean)
+OriAbr200cmh.xts <- Abr200cmh.xts
+plot(Abr200cmh.xts['2021-12-20 20:50/2021-12-22 08:50',2])
+Abr200cmh.xts['2021-12-20 20:50/2021-12-22 08:50',2] <- 13.2
+
 
 ## Napi adatok Bencétől
 library(readxl)
