@@ -169,6 +169,9 @@ Abr10cmd.xts  <- xts(Abr10cmd.df[,-c(1,5)], AbrIdod.vec)
 AbrCsapd.xts  <- xts(Abr10cmd.df[,5], AbrIdod.vec)
 AbrCsapd.xts  <- c(AbrCsapd.xts, PrecAbr10cm.xts['2022'])
 
+Csap202204.df <- as.data.frame(read_xlsx("2022évescsap.xlsx", 2))
+AbrCsapd.xts <- c(AbrCsapd.xts['/2022-04-24'], xts(Csap202204.df[,2], Csap202204.df[,1] + 12 * 60 * 60))
+
 Abr90cmd.df <- as.data.frame(read_xlsx("Napi_talajnedvesség_csapadék.xlsx", range = "J2:L236"))
 Abr90cmd.xts  <- xts(Abr90cmd.df, AbrIdod.vec)
 
