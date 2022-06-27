@@ -40,7 +40,7 @@ lines(as.zoo(Meentelekcsap.xts * -1), type = "h", col = "lightblue", lend = 1, l
 axis(2, at=c(0,-50,-100), lab = c(0,50,100))
 mtext("Precipitation [mm/week]", side = 2, line = 2.1, at = -50, las = 0)
 Sys.setlocale("LC_TIME", orilocale)
-legend(as.Date("2019-07-07"), -52, legend = c("Black Locust", "Black Pine", "Control"), col = c(1:3), lty=1, lwd = c(2, 2, 2) , bg = "white")
+legend(as.Date("2019-07-05"), -60, legend = c("Black Locust", "Black Pine", "Control"), col = c(1:3), lty=1, lwd = c(2, 2, 2) , bg = "white", cex = 0.93)
 box()
 par(mar=c(2.8,0,0.6,2.8), fig = c(0.8, 1, 0, 1), new = TRUE)
 boxplot(Data ~ Place, data = talnedv.fac, ylim = c(0, 20), yaxs = "i", xaxt = "n", yaxt = "n", border = NA, frame = FALSE, col="white")
