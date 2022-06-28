@@ -206,3 +206,7 @@ Meentelekcsap.xts['/2021-05-03']-Meentelek.compare
 LongTerm.raw <- as.data.frame(read_excel("Abrajav/Hosszútávú GW-P.xlsx"))
 colnames(LongTerm.raw) <- c("Year", "GW", "Prec")
 LongTerm.xts <- xts(LongTerm.raw[, c("GW", "Prec")], as.Date(paste0(LongTerm.raw[, "Year"], "-07-01"))) 
+
+## Modelled temperature
+FORESEEtemp <- read.csv("Abrajav/FORESEEv3.1_2447_46.9167_19.4167_measured_1960_2015.csv")
+avgtemp.xts <- xts(FORESEEtemp[, "avg_tday"], as.Date(paste0(FORESEEtemp[, "year"], "-07-01")))
