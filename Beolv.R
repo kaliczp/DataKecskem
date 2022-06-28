@@ -201,3 +201,8 @@ Meentelek.idx <- c(0,Meentelek.idx)
 Meentelek.compare <- period.apply(csap.xts, Meentelek.idx, sum)
 Meentelekcsap.xts <- xts(Meentelek220510[,5], Meentelek220510Date)
 Meentelekcsap.xts['/2021-05-03']-Meentelek.compare
+
+## Long-term data
+LongTerm.raw <- as.data.frame(read_excel("Abrajav/Hosszútávú GW-P.xlsx"))
+colnames(LongTerm.raw) <- c("Year", "GW", "Prec")
+LongTerm.xts <- xts(LongTerm.raw[, c("GW", "Prec")], as.Date(paste0(LongTerm.raw[, "Year"], "-07-01"))) 
