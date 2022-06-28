@@ -14,7 +14,7 @@ library(RColorBrewer)
 Well.palette <- brewer.pal(8, "Dark2")
 
 jpeg("GWWells.jpg", width=17.8, height=11, units ="cm", res = 300, pointsize = 11)
-jpeg("GWWells.jpg", width=17.8, height=11, units ="cm", res = 1000, pointsize = 11)
+jpeg("GWWells1000.jpg", width=17.8, height=11, units ="cm", res = 1000, pointsize = 11)
 png("GWWells.png", width=17.8, height=11, units ="cm", res = 300, pointsize = 11)
 
 par(mar = c(2.3, 3.5, 0.5, 0.2), las = 1, mgp = c(2.5,0.6,0))
