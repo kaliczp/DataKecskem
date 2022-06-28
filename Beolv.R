@@ -210,3 +210,10 @@ LongTerm.xts <- xts(LongTerm.raw[, c("GW", "Prec")], as.Date(paste0(LongTerm.raw
 ## Modelled temperature
 FORESEEtemp <- read.csv("Abrajav/FORESEEv3.1_2447_46.9167_19.4167_measured_1960_2015.csv")
 avgtemp.xts <- xts(FORESEEtemp[, "avg_tday"], as.Date(paste0(FORESEEtemp[, "year"], "-07-01")))
+
+## GW wells
+GWwells <- as.data.frame(read_excel("Abrajav/Hosszútávú talajvíz idősorok (8 helyszín).xlsx"))
+
+## Forest
+ForesSandRidge <- as.data.frame(read_xlsx("Erdovalt_kiskunsag1790_tol.xlsx"))
+
