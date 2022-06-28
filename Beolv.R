@@ -67,6 +67,12 @@ talaj1 <- as.data.frame(nyerstalaj1[,2:3])
 names(talaj1) <- c("Prec", "GW")
 talaj1.xts <- xts(talaj1, tal1.Date)
 
+## talaj1.xts az új adatok alapján
+talaj1.raw <- data.frame(read_excel("Abrajav/Fig4 GW - kiegészített.xlsx", col_names = FALSE))
+colnames(talaj1.raw) <- c("Date", "GW")
+talaj1.ok <- talaj1.raw[!is.na(talaj1.raw$GW),]
+talaj1.xts <- xts(talaj1.ok$GW, as.Date(talaj1.ok$Date))
+
 tal2.Date <- as.Date(as.data.frame(nyerstalaj2[,1])[,1])
 talaj2 <- as.data.frame(nyerstalaj2[,2:3])
 names(talaj2) <- c("Prec", "GW")
