@@ -217,3 +217,11 @@ GWwells <- as.data.frame(read_excel("Abrajav/Hosszútávú talajvíz idősorok (
 ## Forest
 ForesSandRidge <- as.data.frame(read_xlsx("Erdovalt_kiskunsag1790_tol.xlsx"))
 Forest.xts <- xts(ForesSandRidge[,2], as.Date(paste0(ForesSandRidge[, "year"], "-07-01")))
+
+## White diurnal cycle
+White.Méntelek <- as.data.frame(read_xlsx("White-hullámokJászberényMéntelek.xlsx", sheet = "Méntelek"))
+White.Méntelek.xts <- xts(White.Méntelek[,2], White.Méntelek[,1])
+
+White.JszBrny <- as.data.frame(read_xlsx("White-hullámokJászberényMéntelek.xlsx", sheet = "Jászberény "))
+colnames(White.JszBrny) <- c("Time", "Y2013", "Y2015")
+White.JszBrny.xts <- xts(White.JszBrny[, -1], White.JszBrny[,1])
