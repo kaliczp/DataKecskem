@@ -216,4 +216,4 @@ GWwells <- as.data.frame(read_excel("Abrajav/Hosszútávú talajvíz idősorok (
 
 ## Forest
 ForesSandRidge <- as.data.frame(read_xlsx("Erdovalt_kiskunsag1790_tol.xlsx"))
-
+Forest.xts <- xts(ForesSandRidge[,2], as.Date(paste0(ForesSandRidge[, "year"], "-07-01")))
