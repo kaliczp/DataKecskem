@@ -8,15 +8,15 @@ png("White.png", width=17.8, height=11, units ="cm", res = 300, pointsize = 11)
 orilocale <- Sys.getlocale("LC_TIME")
 Sys.setlocale("LC_TIME", "C")
 par(mar=c(2.6,3.5,0.8,3.6), las = 2, mgp = c(3, 0.6, 0))
-plot.zoo(White.Méntelek.xts, type = "n",
+plot.zoo(White.Méntelek.xts['/2019-08-18'], type = "n",
          xaxt = "n", yaxt = "n",
          xaxs = "i", yaxs = "i",
          ylim = c(-8.86,-8.71), ylab = "")
-tickTime <- as.POSIXct(paste0("2019-08-", 12:20))
+tickTime <- as.POSIXct(paste0("2019-08-", 12:19))
 tickTime[1:(length(tickTime)-1)]  <- tickTime[1:(length(tickTime)-1)] + 60 * 60 * 2
 tickTime[length(tickTime)] <- tickTime[length(tickTime)] + 1.75* 60* 60
 axis(1,at = tickTime, lab = FALSE)
-## axis(1,at = tickTime, tck = 1, col = "lightgray", lty = "dotted", lab = F)
+axis(1,at = tickTime, tck = 1, col = "lightgray", lty = "dotted", lab = F)
 axis(1, tickTime[-length(tickTime)] + 12*60*60, lab = paste("Day", 1:(length(tickTime)-1)), tcl=0, las = 0)
 lines(as.zoo(White.Méntelek.xts), lwd = 2, col = gwcol.pal[1])
 axis(4, at = c(-8.82, -8.84, -8.86))
