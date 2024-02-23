@@ -51,7 +51,8 @@ par(mar=c(2.6,3.5,0.8,6.6), las = 1, mgp = c(3, 0.6, 0))
 plot.zoo(LongTerm.xts[, "GW"], type = "n", xaxs = "i", yaxs = "i", xlim = FigLim,
          ylim = c(-4,1), lwd = 2,
          xlab = "", ylab = "",
-         yaxt = "n")
+         xaxt = "n", yaxt = "n")
+axis.Date(1, at = c(FigLim[1], as.Date(paste0(c(1970, 1980, 1990, 2000, 2010), "-01-01")), FigLim[2]), format = "%Y")
 axis(2, at =  - seq(1, 4, 0.5), tck = 1, col = "lightgray", lty = "dotted", lab = F)
 lines(as.zoo(LongTerm.xts[, "GW"]), lwd = 2)
 axis(2, at = -(1:4))
