@@ -41,7 +41,7 @@ mtext("Forest cover [%]", side = 4, line = 5.5, at = 50, las = 0, col = "darkgre
 box()
 
 ### Magyarul
-jpeg("LongTerm.jpg", width=17.8, height=11, units ="cm", res = 300, pointsize = 11)
+jpeg("LongTermHU.jpg", width=17.8, height=11, units ="cm", res = 300, pointsize = 11)
 jpeg("LongTerm1000.jpg", width=17.8, height=11, units ="cm", res = 1000, pointsize = 11)
 png("LongTerm.png", width=17.8, height=11, units ="cm", res = 300, pointsize = 11)
 
