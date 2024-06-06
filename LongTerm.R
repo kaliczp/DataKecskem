@@ -83,3 +83,7 @@ par(mgp = c(6,4.4,3.8))
 axis(4)
 mtext("Erdőborítottság [%]", side = 4, line = 5.5, at = 50, las = 0, col = "darkgreen")
 box()
+
+## Adat vissza
+write.zoo(x = merge(round(LongTerm.xts,2), round(avgtemp.xts,1), round(Forest.xts,2)),
+            "LongTermTable.csv", dec = ",")
