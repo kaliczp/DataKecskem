@@ -85,5 +85,7 @@ mtext("Erdőborítottság [%]", side = 4, line = 5.5, at = 50, las = 0, col = "d
 box()
 
 ## Adat vissza
-write.zoo(x = merge(round(LongTerm.xts,2), round(avgtemp.xts,1), round(Forest.xts,2)),
-            "LongTermTable.csv", dec = ",")
+FullLongTerm <- merge(round(LongTerm.xts,2), round(avgtemp.xts,1), round(Forest.xts,2))
+names(FullLongTerm) <- c( "GW", "Prec", "AvgTemp", "Forest")
+write.zoo(x = FullLongTerm,
+          "LongTermTable.csv", dec = ",")
